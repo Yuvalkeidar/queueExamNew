@@ -5,6 +5,9 @@ import { createTask } from '../actions/index';
 import TaskField from '../components/taskField';
 import { Link } from 'react-router-dom';
 
+import { Event } from 'react-socket-io';
+import io from 'socket.io-client';
+
 class AddTask extends Component{
   constructor(props) {
     super(props)
@@ -21,7 +24,6 @@ class AddTask extends Component{
     this.onEtimeChange   = this.onEtimeChange.bind(this);
     this.onPriortyChange = this.onPriortyChange.bind(this);
     this.onFormSubmit    = this.onFormSubmit.bind(this);
-
   }
 
 // on submit create new task in the server and return tasks

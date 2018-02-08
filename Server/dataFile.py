@@ -1,6 +1,5 @@
 import json, threading,simplejson
-from threading import Thread
-
+from threading import Thread 
 # lock for using in the same file from differnt places
 lock = threading.Lock()
 

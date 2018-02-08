@@ -1,6 +1,7 @@
-from flask import Flask, redirect, url_for, request, jsonify
+from flask import Flask, redirect, url_for, request, jsonify,render_template
 from flask_cors import CORS
 from dataFile import updateDataFile,tasks
+from flask_socketio import SocketIO,emit
 
 # get Max Key in the list to continue from there
 # and to avoid duplicates
@@ -19,6 +20,12 @@ app = Flask(__name__)
 
 # open the webservie to all origins
 CORS(app)
+
+socketio = SocketIO(app)
+
+def updateTasks(tasks):
+    updateDataFile(tasks)
+    socketio.emit('updateTasks')
 
 # all the methods return json for the client
 # new task - add task and sort the queue as the question want
@@ -40,7 +47,7 @@ def createTask():
             tasks.append(task)
             tasks.sort(key = lambda x:(x['eTime'],x['priorty']*-1))
 
-            updateDataFile(tasks)
+            updateTasks(tasks)
 
             return jsonify({'tasks': tasks})
 
@@ -61,6 +68,6 @@ def deleteTask(key):
           del tasks[index]
         index+=1
 
-    updateDataFile(tasks)
+    updateTasks(tasks)
 
     return jsonify({'tasks': tasks})
