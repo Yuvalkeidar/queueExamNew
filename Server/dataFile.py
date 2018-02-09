@@ -11,7 +11,7 @@ tasks=[]
 # read the data from the file that contain the data from previous connections
 with open(filePath,'r') as json_file:  
     tasks = json.load(json_file)
-
+    
 def updateDataFile(data):
     lock.acquire() # thread blocks at this line until it can obtain lock
     try:

@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, request, jsonify,render_template
 from flask_cors import CORS
 from dataFile import updateDataFile,tasks
 from flask_socketio import SocketIO,emit
+import sched, time,datetime
 
 # get Max Key in the list to continue from there
 # and to avoid duplicates
@@ -21,10 +22,14 @@ app = Flask(__name__)
 # open the webservie to all origins
 CORS(app)
 
-socketio = SocketIO(app)
+socketio = SocketIO(app,async_mode=None)
 
 def updateTasks(tasks):
     updateDataFile(tasks)
+    socketio.emit('updateTasks')
+
+@socketio.on('connect') 
+def handle_connect():
     socketio.emit('updateTasks')
 
 # all the methods return json for the client

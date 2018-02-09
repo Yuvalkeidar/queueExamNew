@@ -17,7 +17,7 @@ class TaskList extends Component{
     this.onClickDelete = this.onClickDelete.bind(this);
     this.renderTasks   = this.renderTasks.bind(this);
     // this.updateTasks   = this.updateTasks.bind(this);
-// create call get from the server
+    // create call get from the server
     this.featchTasks( );
 // the worker run every minute so I refreshed the taks list 10 times in minute
 // to see changes from the worker - better solution to use with websocket

@@ -30,6 +30,7 @@ export function featchTasks(){
 }
 // delete tasks
 export function deleteTask(taskKey){
+  debugger;
   const url = `${ROOT_URL}/deleteTask/${taskKey}`;
   const request = axios.post(url);
 
