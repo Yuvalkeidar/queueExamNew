@@ -19,10 +19,6 @@ class TaskList extends Component{
     // this.updateTasks   = this.updateTasks.bind(this);
     // create call get from the server
     this.featchTasks( );
-// the worker run every minute so I refreshed the taks list 10 times in minute
-// to see changes from the worker - better solution to use with websocket
-// but I dont have enough time for that
-    // setInterval(this.featchTasks,6000);
   }
   onClickDelete(event){
     this.props.deleteTask(event.target.id)
@@ -76,9 +72,3 @@ function mapStateToProps(state){
   return {tasks:state.tasks};
 }
 export default connect(mapStateToProps,mapDispatchToProps)(TaskList);
-
-// function mapStateToProps(state){
-//   return {tasks:state.tasks};
-// }
-//
-// export default connect(mapStateToProps)(TaskList);

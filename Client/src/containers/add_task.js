@@ -5,9 +5,6 @@ import { createTask } from '../actions/index';
 import TaskField from '../components/taskField';
 import { Link } from 'react-router-dom';
 
-import { Event } from 'react-socket-io';
-import io from 'socket.io-client';
-
 class AddTask extends Component{
   constructor(props) {
     super(props)
