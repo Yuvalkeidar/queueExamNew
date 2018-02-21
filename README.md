@@ -5,13 +5,13 @@ Second - execute the server
 Third - execute the client
 
 ```
-git clone https://github.com/Yuvalkeidar/queueExam.git
+git clone https://github.com/Yuvalkeidar/taskQueue.git
 ```
 
 ## How to run Server:
 
 ```
-> run Home_exam.py
+> run Server.py
 ```
 
 ## How to run Client:
